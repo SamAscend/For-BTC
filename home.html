@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <nav>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <ul id="nav-menu">
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#hobby">Hobby</a></li>
+      <li><a href="#goal">Goal</a></li>
+      <li><a href="#social">Social Media</a></li>
+      <li><button class="logout-btn" onclick="logout()">Logout</button></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>Hai, <span id="user-name"></span>!</h1>
+    <h2 id="typing-text"></h2>
+  </section>
+
+  <input type="text" id="search" class="search-bar" placeholder="Cari bagian..."/>
+
+  <section id="profile" class="section">
+    <h3>Profile</h3>
+    <p>Profile </p>
+  </section>
+
+  <section id="about" class="section">
+    <h3>About</h3>
+    <p>Ceritain tentang dirimu di sini.</p>
+  </section>
+
+  <section id="hobby" class="section">
+    <h3>Hobby</h3>
+    <p>Hobi kamu ditulis di sini.</p>
+  </section>
+
+  <section id="goal" class="section">
+    <h3>Goal</h3>
+    <p>Tujuan hidup dan impian kamu.</p>
+  </section>
+
+  <section id="social" class="section">
+    <h3>Social Media</h3>
+    <p>Link ke Instagram, GitHub, dll.</p>
+  </section>
+
+  <footer>
+    <p>Web pribadi © 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
