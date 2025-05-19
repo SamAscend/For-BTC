@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      if (username === "SamAralie" && password === "password123") {
+      if (username === "Bitcoin" && password === "@forall$") {
         localStorage.setItem("loggedInUser", username);
-        window.location.href = "home.html";
+        window.location.href = "index.html";
       } else {
         alert("Invalid credentials");
       }
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // === TYPEWRITER EFFECT ===
   if (typewriterElement) {
-    const text = typewriterElement.getAttribute("data-text") || "Welcome, SamAralie!";
+    const text = typewriterElement.getAttribute("data-text") || "Welcome, Sam!";
     let index = 0;
 
     function typeWriter() {
