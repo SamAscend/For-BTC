@@ -1,61 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For-BTC</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav>
-    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <ul id="nav-menu">
-      <li><a href="#profile">Profile</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#hobby">Hobby</a></li>
-      <li><a href="#goal">Goal</a></li>
-      <li><a href="#social">Social Media</a></li>
-      <li><button class="logout-btn" onclick="logout()">Logout</button></li>
-    </ul>
-  </nav>
 
-  <section class="hero">
-    <h1>Hai, <span id="user-name"></span>!</h1>
-    <h2 id="typing-text"></h2>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">MyBrand</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Welcome to For-BTC</h1>
+      <p>This is our personal space on the internet</p>
+      <a href="#about" class="btn">Explore</a>
+    </div>
   </section>
 
-  <input type="text" id="search" class="search-bar" placeholder="Cari bagian..."/>
-
-  <section id="profile" class="section">
-    <h3>Profile</h3>
-    <p>Profile </p>
+  <section class="slider-section">
+    <div class="slider">
+      <div class="slide reveal"> 
+        <img src="images/slide1.jpg" alt="Slide 1">
+        <div class="slide-caption">Selamat Datang di Web Saya</div>
+      </div>
+      <div class="slide reveal">
+        <img src="images/slide2.jpg" alt="Slide 2">
+        <div class="slide-caption">Jelajahi Proyek Saya</div>
+      </div>
+      <div class="slide reveal">
+        <img src="images/slide3.jpg" alt="Slide 3">
+        <div class="slide-caption">Gabung Sekarang!</div>
+      </div>
+      <button class="prev">‹</button>
+      <button class="next">›</button>
+    </div>
   </section>
 
-  <section id="about" class="section">
-    <h3>About</h3>
-    <p>Ceritain tentang dirimu di sini.</p>
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>I am a web enthusiast who loves building cool dark-themed websites. This is my personal project to show off my creativity and skills.</p>
+    </div>
   </section>
 
-  <section id="hobby" class="section">
-    <h3>Hobby</h3>
-    <p>Hobi kamu ditulis di sini.</p>
+  <!-- Gallery Section -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 1">
+        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 2">
+        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 3">
+      </div>
+    </div>
   </section>
 
-  <section id="goal" class="section">
-    <h3>Goal</h3>
-    <p>Tujuan hidup dan impian kamu.</p>
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
   </section>
 
-  <section id="social" class="section">
-    <h3>Social Media</h3>
-    <p>Link ke Instagram, GitHub, dll.</p>
-  </section>
-
+  <!-- Footer -->
   <footer>
-    <p>Web pribadi © 2025</p>
+    <p>&copy; 2025 OurBrand. All rights reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Sign In / Sign Up Modals (basic template) -->
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>Sign In</h2>
+      <form action="#">
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+  </div>
 </body>
 </html>

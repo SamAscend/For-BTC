@@ -1,79 +1,111 @@
-// FINAL LOGIN PAGE SCRIPT WITH TYPEWRITER & SLIDER
+// === AUTH LOGIC SIMULASI (localStorage) + SLIDER & ANIMASI ===
 
 document.addEventListener("DOMContentLoaded", function () {
-  const authBtn = document.getElementById("auth-btn");
-  const toggleAuth = document.getElementById("toggle-auth");
-  const passwordInput = document.getElementById("password");
-  const typewriterElement = document.getElementById("typewriter");
-  const sliderImages = document.querySelectorAll(".slider img");
+  const path = window.location.pathname;
 
-  // === FIXED LOGIN FUNCTION ===
-  if (authBtn) {
-    authBtn.addEventListener("click", function () {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+  // === SIGNUP ===
+  if (path.includes("signup.html")) {
+    const form = document.querySelector("form");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const username = form.username.value.trim();
+      const email = form.email.value.trim();
+      const password = form.password.value.trim();
 
-      if (!username || !password) {
-        alert("Please enter username and password.");
-        return;
-      }
+      if (username && email && password) {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const existingUser = users.find((user) => user.username === username);
 
-      if (username === "Bitcoin" && password === "@forall$") {
-        localStorage.setItem("loggedInUser", username);
-        window.location.href = "index.html";
+        if (existingUser) {
+          alert("Username sudah terdaftar. Silakan login.");
+        } else {
+          users.push({ username, email, password });
+          localStorage.setItem("users", JSON.stringify(users));
+          alert("Pendaftaran berhasil!");
+          window.location.href = "login.html";
+        }
       } else {
-        alert("Invalid credentials");
+        alert("Semua kolom harus diisi!");
       }
     });
   }
 
-  // === TOGGLE PASSWORD VISIBILITY ON DOUBLE CLICK ===
-  if (passwordInput) {
-    passwordInput.addEventListener("dblclick", function () {
-      passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+  // === LOGIN ===
+  if (path.includes("login.html")) {
+    const form = document.querySelector("form");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const username = form.username.value.trim();
+      const password = form.password.value.trim();
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find(
+        (u) => u.username === username && u.password === password
+      );
+
+      if (user) {
+        sessionStorage.setItem("loggedInUser", username);
+        alert("Login berhasil!");
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Username atau password salah!");
+      }
     });
   }
 
-  // === TYPEWRITER EFFECT ===
-  if (typewriterElement) {
-    const text = typewriterElement.getAttribute("data-text") || "Welcome, Sam!";
-    let index = 0;
-
-    function typeWriter() {
-      if (index < text.length) {
-        typewriterElement.textContent += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 100);
-      }
+  // === DASHBOARD LOGIN VALIDATION ===
+  if (path.includes("dashboard.html")) {
+    const user = sessionStorage.getItem("loggedInUser");
+    if (!user) {
+      alert("Kamu harus login dulu!");
+      window.location.href = "login.html";
     }
-
-    typewriterElement.textContent = "";
-    typeWriter();
   }
 
-  // === SIMPLE IMAGE SLIDER ===
-  if (sliderImages.length > 0) {
-    let currentSlide = 0;
+  // === SLIDER FUNCTION ===
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".slide");
+  const nextBtn = document.querySelector(".next");
+  const prevBtn = document.querySelector(".prev");
 
-    function showSlide(index) {
-      sliderImages.forEach((img, i) => {
-        img.style.display = i === index ? "block" : "none";
-      });
-    }
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.display = i === index ? "block" : "none";
+    });
+  }
 
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % sliderImages.length;
-      showSlide(currentSlide);
-    }
-
+  if (slides.length > 0) {
     showSlide(currentSlide);
-    setInterval(nextSlide, 3000); // change every 3s
+
+    nextBtn?.addEventListener("click", () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    });
+
+    prevBtn?.addEventListener("click", () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    });
   }
 
-  // === HOME PAGE: DISPLAY LOGGED-IN USER ===
-  const loggedUser = localStorage.getItem("loggedInUser");
-  const userNameEl = document.getElementById("user-name");
-  if (userNameEl && loggedUser) {
-    userNameEl.textContent = loggedUser;
-  }
+  // === SCROLL ANIMATION ===
+  const revealElements = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  revealElements.forEach((el) => observer.observe(el));
+
+  // === DARK MODE TOGGLE ===
+  const toggleBtn = document.querySelector("#theme-toggle");
+  toggleBtn?.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
 });
