@@ -248,3 +248,26 @@ footer {
 .auth-box a:hover {
   text-decoration: underline;
 }
+
+.social-media {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.social-media h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.social-media a {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  text-decoration: none;
+}
+
+.social-media a:hover {
+  color: #6a1b9a;
+}
