@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For-BTC</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
@@ -20,11 +21,9 @@
         <li><a href="login.html">Login</a></li>
       </ul>
     </nav>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <button id="theme-toggle" class="btn">Toggle Dark Mode</button>
   </header>
 
-
-  
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-content">
@@ -34,18 +33,19 @@
     </div>
   </section>
 
+  <!-- Slider Section -->
   <section class="slider-section">
     <div class="slider">
       <div class="slide reveal"> 
-        <img src="images/slide1.jpg" alt="Slide 1">
+        <img src="images/slide1.jpg" alt="Slide 1" />
         <div class="slide-caption">Selamat Datang di Web Saya</div>
       </div>
       <div class="slide reveal">
-        <img src="images/slide2.jpg" alt="Slide 2">
+        <img src="images/slide2.jpg" alt="Slide 2" />
         <div class="slide-caption">Jelajahi Proyek Saya</div>
       </div>
       <div class="slide reveal">
-        <img src="images/slide3.jpg" alt="Slide 3">
+        <img src="images/slide3.jpg" alt="Slide 3" />
         <div class="slide-caption">Gabung Sekarang!</div>
       </div>
       <button class="prev">‹</button>
@@ -66,9 +66,9 @@
     <div class="container">
       <h2>Gallery</h2>
       <div class="gallery-grid">
-        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 1">
-        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 2">
-        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 3">
+        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 1" />
+        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 2" />
+        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 3" />
       </div>
     </div>
   </section>
@@ -78,8 +78,8 @@
     <div class="container">
       <h2>Contact Us</h2>
       <form action="#" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit" class="btn">Send Message</button>
       </form>
@@ -91,7 +91,7 @@
     <p>&copy; 2025 OurBrand. All rights reserved.</p>
   </footer>
 
-  <!-- Sign In / Sign Up Modals (basic template) -->
+  <!-- Auth Container -->
   <div class="auth-container">
     <div class="auth-box">
       <h2>Sign In</h2>
@@ -104,19 +104,22 @@
     </div>
   </div>
 
-  <div class="social-media">
-    <h3>Sam</h3>
-    <a href="https://instagram.com/samuel_mahanaim" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br>
-    <a href="mailto:samuel.sinurat05@gmail.com"><i class="fas fa-envelope"></i> Email</a><br>
-    <a href="https://linkedin.com/in/akun_gua" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-  </div>
-  
-  <div class="social-media">
-    <h3>Alex</h3>
-    <a href="https://instagram.com/alexander.12.27" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br>
-    <a href="mailto:emailtemen@example.com"><i class="fas fa-envelope"></i> Email</a><br>
-    <a href="https://linkedin.com/in/akun_temen" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-  </div>
-  
+  <!-- Social Media -->
+  <section class="social-media-section">
+    <div class="social-media">
+      <h3>Sam</h3>
+      <a href="https://instagram.com/samuel_mahanaim" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br />
+      <a href="mailto:samuel.sinurat05@gmail.com"><i class="fas fa-envelope"></i> Email</a><br />
+      <a href="https://linkedin.com/in/akun_gua" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+
+    <div class="social-media">
+      <h3>Alex</h3>
+      <a href="https://instagram.com/alexander.12.27" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br />
+      <a href="mailto:emailtemen@example.com"><i class="fas fa-envelope"></i> Email</a><br />
+      <a href="https://linkedin.com/in/akun_temen" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </section>
+
 </body>
 </html>

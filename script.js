@@ -3,6 +3,19 @@
 document.addEventListener("DOMContentLoaded", function () {
   const path = window.location.pathname;
 
+  // Helper function untuk alert + redirect
+  function notify(message, redirectUrl = null) {
+    alert(message);
+    if (redirectUrl) {
+      window.location.href = redirectUrl;
+    }
+  }
+
+  // Validasi email simple
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
   // === SIGNUP ===
   if (path.includes("signup.html")) {
     const form = document.querySelector("form");
@@ -12,20 +25,25 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = form.email.value.trim();
       const password = form.password.value.trim();
 
-      if (username && email && password) {
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-        const existingUser = users.find((user) => user.username === username);
+      if (!username || !email || !password) {
+        notify("Semua kolom harus diisi!");
+        return;
+      }
 
-        if (existingUser) {
-          alert("Username sudah terdaftar. Silakan login.");
-        } else {
-          users.push({ username, email, password });
-          localStorage.setItem("users", JSON.stringify(users));
-          alert("Pendaftaran berhasil!");
-          window.location.href = "login.html";
-        }
+      if (!isValidEmail(email)) {
+        notify("Email tidak valid!");
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const existingUser = users.find((user) => user.username === username);
+
+      if (existingUser) {
+        notify("Username sudah terdaftar. Silakan login.");
       } else {
-        alert("Semua kolom harus diisi!");
+        users.push({ username, email, password });
+        localStorage.setItem("users", JSON.stringify(users));
+        notify("Pendaftaran berhasil!", "login.html");
       }
     });
   }
@@ -45,10 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (user) {
         sessionStorage.setItem("loggedInUser", username);
-        alert("Login berhasil!");
-        window.location.href = "dashboard.html";
+        notify("Login berhasil!", "dashboard.html");
       } else {
-        alert("Username atau password salah!");
+        notify("Username atau password salah!");
       }
     });
   }
@@ -57,8 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (path.includes("dashboard.html")) {
     const user = sessionStorage.getItem("loggedInUser");
     if (!user) {
-      alert("Kamu harus login dulu!");
-      window.location.href = "login.html";
+      notify("Kamu harus login dulu!", "login.html");
     }
   }
 
@@ -74,15 +90,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  if (slides.length > 0) {
+  if (slides.length > 0 && nextBtn && prevBtn) {
     showSlide(currentSlide);
 
-    nextBtn?.addEventListener("click", () => {
+    nextBtn.addEventListener("click", () => {
       currentSlide = (currentSlide + 1) % slides.length;
       showSlide(currentSlide);
     });
 
-    prevBtn?.addEventListener("click", () => {
+    prevBtn.addEventListener("click", () => {
       currentSlide = (currentSlide - 1 + slides.length) % slides.length;
       showSlide(currentSlide);
     });
@@ -103,9 +119,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   revealElements.forEach((el) => observer.observe(el));
 
-  // === DARK MODE TOGGLE ===
+  // === DARK MODE TOGGLE WITH LOCALSTORAGE ===
   const toggleBtn = document.querySelector("#theme-toggle");
+
+  // Load dark mode preference
+  if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+  }
+
   toggleBtn?.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
+    if (document.body.classList.contains("dark-mode")) {
+      localStorage.setItem("darkMode", "enabled");
+    } else {
+      localStorage.setItem("darkMode", "disabled");
+    }
   });
 });
