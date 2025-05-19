@@ -120,19 +120,31 @@ document.addEventListener("DOMContentLoaded", function () {
   revealElements.forEach((el) => observer.observe(el));
 
   // === DARK MODE TOGGLE WITH LOCALSTORAGE ===
-  const toggleBtn = document.querySelector("#theme-toggle");
+  // Toggle dark mode
+const toggleBtn = document.getElementById("theme-toggle");
 
-  // Load dark mode preference
-  if (localStorage.getItem("darkMode") === "enabled") {
-    document.body.classList.add("dark-mode");
-  }
-
-  toggleBtn?.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    if (document.body.classList.contains("dark-mode")) {
-      localStorage.setItem("darkMode", "enabled");
-    } else {
-      localStorage.setItem("darkMode", "disabled");
-    }
-  });
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
 });
+
+     // LOGOUT BUTTON HANDLER
+     document.getElementById("logoutBtn").addEventListener("click", function () {
+      sessionStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+    });
+
+    // Reveal animation on scroll (basic)
+    window.addEventListener('scroll', function () {
+      const reveals = document.querySelectorAll('.reveal');
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 100;
+
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        }
+      }
+    });
+  });
+

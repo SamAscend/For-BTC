@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="dashboard-container">
-    <header>
+<body class="dashboard-page">
+  <div class="dashboard-container reveal">
+    <header class="dashboard-header">
       <h1>Welcome to Your Dashboard</h1>
       <p class="subtitle">Ini adalah halaman pribadi kamu, enjoy your stay!</p>
     </header>
-    <main>
+
+    <main class="dashboard-main">
       <p>Kamu berhasil login atau daftar. Web ini bisa lu kembangin buat portofolio, personal brand, atau apapun!</p>
-      <a href="index.html" class="btn">Balik ke Beranda</a>
+      <div class="dashboard-buttons">
+        <a href="index.html" class="btn">Balik ke Beranda</a>
+        <button id="logoutBtn" class="btn danger">Logout</button>
+      </div>
     </main>
+
+    <button id="theme-toggle">Toggle Theme</button>
+
   </div>
-</body>
-</html>
+
+  <script src="script.js"></script>
+  <script>
+   
