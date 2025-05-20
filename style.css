@@ -37,8 +37,14 @@ ul {
 
 .logo {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 2.0rem;
   color: #4b2e05; /* cokelat tua */
+}
+
+.logo-img {
+  height: 80px;
+  vertical-align: middle;
+  margin-right: 20px;
 }
 
 .navbar .container {
@@ -93,7 +99,7 @@ ul {
 }
 
 .btn:hover {
-  background: #7a5119; /* cokelat agak terang */
+  background: #b8863b; /* lebih terang dari coklat tua */
 }
 
 /* Slider */
@@ -103,23 +109,34 @@ ul {
 }
 
 .slider-container {
+  width: 100%;
+  max-width: 600px; /* bisa atur ukuran tengah */
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
   display: flex;
-  animation: slide 12s infinite;
-  width: 300%;
+  justify-content: center;
+  align-items: center;
 }
 
 .slider-container img {
-  width: 100%;
-  object-fit: cover;
-  flex: 1 0 100%;
-  height: 300px;
+  min-width: 100%;
+  transition: transform 0.5s ease-in-out;
+  display: none;
 }
 
-@keyframes slide {
-  0%   { transform: translateX(0%); }
-  33%  { transform: translateX(-100%); }
-  66%  { transform: translateX(-200%); }
-  100% { transform: translateX(0%); }
+.slider-container img.active {
+  display: block;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-300px * 3)); /* maju 3 gambar */
+  }
 }
 
 /* Features */
@@ -153,9 +170,10 @@ ul {
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(75, 46, 5, 0.3);
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(75, 46, 5, 0.2);
 }
+
 
 .feature-card .icon {
   margin-bottom: 1rem;
@@ -304,32 +322,148 @@ footer {
 }
 
 /* === Footer === */
-.footer-section {
-  background-color: #4a2d00;
+.footer-container {
+  background: linear-gradient(135deg, #f7c873, #2e1f04);
   color: white;
-  padding: 20px 0;
-  text-align: center;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  background-color: rgba(0, 0, 0, 0.3); /* transparan sedikit */
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem;
+  min-width: 200px;
 }
 
 .footer-section h5 {
-  margin: 0;
-  font-weight: 400;
+  margin-bottom: 0.5rem;
 }
 
 .footer-section a {
-  display: flex;
-  align-items: center;
+  display: block;
+  margin: 0.5rem 0;
   color: #fff;
-  margin-bottom: 0.5rem;
   text-decoration: none;
-}
-
-.footer-section a i {
-  margin-right: 0.5rem;
-  color: #ff9900;
-  font-size: 1.2rem;
+  transition: color 0.3s;
 }
 
 .footer-section a:hover {
-  text-shadow: 0 0 10px #ff9900;
+  color: #ffd700; /* warna gold terang pas hover */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 1rem;
+  background-color: #1a1200;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.scroll-focus {
+  animation: highlightSection 1s ease-in-out;
+}
+
+@keyframes highlightSection {
+  0% { background-color: #fff9e6; }
+  100% { background-color: transparent; }
+}
+
+.headline:empty::before {
+  content: "...";
+  color: #aaa;
+  font-style: italic;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: black; /* Bingkai hitam */
+  font-family: 'Inter', sans-serif;
+}
+
+.main-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+/* Tambahan agar semua section punya margin bawah */
+section, footer {
+  margin-bottom: 20px;
+}
+
+/* Optional: biar konten ga nempel ke sisi kiri/kanan */
+.container {
+  padding: 0 15px;
+}
+
+.parallax {
+  background-image: url('pictures/BG.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+}
+
+.feature-card {
+  transition: all 0.3s ease;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: white;
+}
+.feature-card:hover {
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.6);
+  transform: translateY(-5px) scale(1.02);
+}
+
+.bubbles span {
+  position: absolute;
+  bottom: -50px;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 123, 255, 0.3);
+  border-radius: 50%;
+  animation: bubble 10s linear infinite;
+  left: calc(100% * var(--i));
+}
+
+@keyframes bubble {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: orange;
+  width: 0%;
+  z-index: 9999;
+}
+
+.reveal-text {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.reveal-text.show {
+  opacity: 1;
+  transform: translateY(0);
 }

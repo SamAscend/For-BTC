@@ -1,18 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Typing animation di hero headline
-  const headline = document.querySelector('.headline');
-  const text = "Welcome to Our Website!";
-  let index = 0;
-
   function typeWriter() {
-    if (index < text.length) {
-      headline.textContent += text.charAt(index);
+    if (index <= text.length) {
+      headline.textContent = text.substring(0, index);
       index++;
       setTimeout(typeWriter, 100);
     }
   }
-  headline.textContent = ''; // Reset dulu
-  typeWriter();
 
   // 2. Social media glow effect on hover - handled by CSS (see CSS below)
   // Tapi bisa kasih sedikit JS buat tambah kelas tambahan kalau mau, optional
@@ -30,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     AOS.init();
 
     // Typing effect
-    const typingText = "Selamat Datang di NamaBrand";
+    const typingText = "Welcome To For-BTC";
     let i = 0;
     const typeTarget = document.getElementById("typing-text");
 
@@ -55,3 +49,76 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // Smooth scroll dengan animasi
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const target = document.querySelector(targetId);
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+      // Optional animasi saat scroll ke section
+      target.classList.add('scroll-focus');
+      setTimeout(() => target.classList.remove('scroll-focus'), 1000);
+    }
+  });
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').substring(1); // hapus tanda #
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+const images = document.querySelectorAll('.slider-container img');
+let currentIndex = 0;
+
+function showSlide(index) {
+  images.forEach((img, i) => {
+    img.classList.remove('active');
+    if (i === index) img.classList.add('active');
+  });
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % images.length;
+  showSlide(currentIndex);
+}
+
+// Tampilkan slide pertama saat load
+showSlide(currentIndex);
+
+// Ganti slide tiap 4 detik (bisa ubah ke 5 detik kalau mau lebih pelan)
+setInterval(nextSlide, 4000);
+
+window.addEventListener('scroll', () => {
+  const winScroll = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.getElementById("progress-bar").style.width = scrolled + "%";
+});
+
+const reveals = document.querySelectorAll('.reveal-text');
+window.addEventListener('scroll', () => {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    if (top < windowHeight - 100) {
+      el.classList.add('show');
+    }
+  });
+});
