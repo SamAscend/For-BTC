@@ -1,85 +1,123 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NamaBrand - Solusi Digital Modern</title>
+  <title>NamaBrand</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="container">
-      <h1 class="logo">NamaBrand</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#features">Fitur</a></li>
-          <li><a href="#download">Download</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="container" data-aos="fade-up">
-      <h2 class="headline">Bangun Masa Depan Digitalmu</h2>
-      <p class="subtext">Solusi ringan dan cepat untuk kebutuhan keuangan digitalmu.</p>
-      <a href="#download" class="btn">Mulai Sekarang</a>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo"><i class="fas fa-bolt"></i> NamaBrand</h1>
+      <ul class="nav-links">
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Fitur</a></li>
+        <li><a href="#">Unduh</a></li>
+        <li><a href="#">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" data-aos="fade-up">
+    <div class="container">
+      <h2 class="headline" id="typing-text">Selamat Datang di NamaBrand</h2>
+      <p class="subtext">Solusi terbaik untuk kebutuhan digital Anda</p>
+      <button class="btn" id="click-sound">Pelajari Lebih Lanjut</button>
     </div>
   </section>
 
-  <section class="features" id="features">
+  <!-- Slider -->
+  <section class="slider" data-aos="fade-right">
+    <div class="slider-container">
+      <img src="img1.jpg" alt="Slide 1" />
+      <img src="img2.jpg" alt="Slide 2" />
+      <img src="img3.jpg" alt="Slide 3" />
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" data-aos="zoom-in">
     <div class="container">
-      <h3 class="section-title" data-aos="fade-up">Fitur Unggulan</h3>
+      <h3 class="section-title">Kenapa Memilih Kami?</h3>
       <div class="feature-grid">
-        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="icon">
-            <!-- Icon 1: Minimalist Design -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h18v2H3zm0 4h12v2H3zm0 4h18v2H3zm0 4h12v2H3zm0 4h18v2H3z"/></svg>
-          </div>
-          <h4>Desain Minimalis</h4>
-          <p>Clean, elegan, dan fokus ke pengguna.</p>
+        <div class="feature-card">
+          <div class="icon"><i class="fas fa-lock"></i></div>
+          <h4>Keamanan Terjamin</h4>
+          <p>Data Anda aman bersama kami.</p>
         </div>
-        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="icon">
-            <!-- Icon 2: Responsive -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v12H4z" opacity=".3"/><path d="M22 4H2v16h20V4zm-2 14H4V6h16v12z"/></svg>
-          </div>
-          <h4>Super Responsif</h4>
-          <p>Tampilan optimal di semua perangkat.</p>
+        <div class="feature-card">
+          <div class="icon"><i class="fas fa-bolt"></i></div>
+          <h4>Performa Tinggi</h4>
+          <p>Waktu respons cepat dan stabil.</p>
         </div>
-        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="icon">
-            <!-- Icon 3: Access -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm1 14.93V17a1 1 0 0 1-2 0v-.07A8.008 8.008 0 0 1 4.07 13H5a1 1 0 0 1 0-2h-.93A8.008 8.008 0 0 1 11 6.07V7a1 1 0 0 1 2 0v-.93A8.008 8.008 0 0 1 19.93 11H19a1 1 0 0 1 0 2h.93A8.008 8.008 0 0 1 13 16.93z"/></svg>
-          </div>
-          <h4>Akses Instan</h4>
-          <p>Tanpa login. Klik dan pakai langsung.</p>
+        <div class="feature-card">
+          <div class="icon"><i class="fas fa-user-friends"></i></div>
+          <h4>Dukungan Pengguna</h4>
+          <p>Tim kami siap membantu 24/7.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="download" id="download">
-    <div class="container" data-aos="fade-up">
-      <h3>Download Sekarang</h3>
-      <p>Dapatkan file ZIP-nya langsung</p>
-      <button id="downloadBtn" class="btn">Download ZIP</button>
+  <!-- Download -->
+  <section class="download" data-aos="fade-up">
+    <div class="container">
+      <h3>Unduh Aplikasi Kami Sekarang</h3>
+      <button class="btn" id="click-sound-2">Unduh</button>
     </div>
   </section>
 
-  <footer>
-    <div class="container">
-      <p>© 2025 NamaBrand. Semua hak dilindungi.</p>
+  <!-- Footer -->
+  <footer data-aos="fade-up">
+    <div class="footer-container">
+      <!-- Sosmed Orang Pertama -->
+      <div class="footer-section">
+        <h5>Follow [Samuel]</h5>
+        <a href="https://instagram.com/samuel_mahanaim" target="_blank">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="mailto:samuel.sinurat05@gmail.com">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+      </div>
+  
+      <!-- Sosmed Orang Kedua -->
+      <div class="footer-section">
+        <h5>Follow [Alexander]</h5>
+        <a href="https://instagram.com/alexander.12.27" target="_blank">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="mailto:nama2@email.com">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      &copy; 2025 NamaBrand. All rights reserved.
     </div>
   </footer>
-
-  <!-- Scripts -->
+  
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
   </script>
   <script src="script.js"></script>
+
 </body>
 </html>

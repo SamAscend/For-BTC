@@ -1,16 +1,10 @@
-/* ===== RESET & GLOBAL ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Font dan Reset */
 body {
+  margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #ffffff;
-  color: #111;
   line-height: 1.6;
-  scroll-behavior: smooth;
+  color: #1a1a1a; /* hitam pekat tapi gak terlalu harsh */
+  background: #fff; /* putih */
 }
 
 a {
@@ -20,166 +14,322 @@ a {
 
 ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* ===== CONTAINER ===== */
+/* Container */
 .container {
   width: 90%;
   max-width: 1100px;
-  margin: auto;
-  padding: 2rem 0;
+  margin: 0 auto;
 }
 
-/* ===== NAVBAR ===== */
+/* Navbar */
 .navbar {
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background-color: #fff; /* putih */
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc; /* abu gelap */
   position: sticky;
   top: 0;
   z-index: 10;
 }
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #4b2e05; /* cokelat tua */
+}
+
 .navbar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-.nav-links {
-  display: flex;
-  gap: 2rem;
-}
-.nav-links li a {
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  transition: color 0.3s ease;
-}
-.nav-links li a:hover {
-  color: #555;
+
+.nav-links li {
+  display: inline-block;
+  margin-left: 2rem;
 }
 
-/* ===== HERO ===== */
+.nav-links a {
+  color: #1a1a1a;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #4b2e05; /* cokelat tua */
+}
+
+/* Hero */
 .hero {
   padding: 6rem 0;
   text-align: center;
-}
-.hero .headline {
-  font-size: 2.8rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-.hero .subtext {
-  font-size: 1.2rem;
-  margin: 1rem 0 2rem;
-  color: #444;
-  letter-spacing: 0.2px;
-}
-.btn {
-  background: #111;
-  color: #fff;
-  padding: 0.8rem 1.6rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.btn:hover {
-  background: #333;
+  background: #fff; /* ganti gradien biru jadi putih */
+  color: #1a1a1a;
 }
 
-/* ===== FEATURES ===== */
-.features {
-  background: #f9f9f9;
-  padding: 5rem 0;
+.hero .headline {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
-.section-title {
-  text-align: center;
-  font-size: 1.8rem;
+
+.hero .subtext {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #4b2e05; /* cokelat tua */
+}
+
+.btn {
+  background: #4b2e05; /* cokelat tua */
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
   font-weight: 600;
-  margin-bottom: 3rem;
-  letter-spacing: -0.3px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.feature-grid {
+
+.btn:hover {
+  background: #7a5119; /* cokelat agak terang */
+}
+
+/* Slider */
+.slider {
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.slider-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
+  animation: slide 12s infinite;
+  width: 300%;
 }
+
+.slider-container img {
+  width: 100%;
+  object-fit: cover;
+  flex: 1 0 100%;
+  height: 300px;
+}
+
+@keyframes slide {
+  0%   { transform: translateX(0%); }
+  33%  { transform: translateX(-100%); }
+  66%  { transform: translateX(-200%); }
+  100% { transform: translateX(0%); }
+}
+
+/* Features */
+.features {
+  padding: 4rem 0;
+  background-color: #fff;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  color: #4b2e05; /* cokelat tua */
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
 .feature-card {
   background: #fff;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  flex: 1;
-  min-width: 260px;
-  max-width: 300px;
-  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   transition: transform 0.3s ease;
+  border: 1px solid #ddd;
 }
+
 .feature-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(75, 46, 5, 0.3);
 }
+
 .feature-card .icon {
   margin-bottom: 1rem;
-  color: #111;
-}
-.feature-card h4 {
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.2px;
-}
-.feature-card p {
-  color: #555;
-  letter-spacing: 0.1px;
+  color: #4b2e05; /* cokelat tua */
 }
 
-/* ===== DOWNLOAD ===== */
+/* Download */
 .download {
-  padding: 5rem 0;
+  padding: 4rem 0;
+  text-align: center;
+  background: #fff;
+  color: #1a1a1a;
+}
+
+.download h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Footer Sosial Media */
+footer {
+  background-color: #1a1a1a; /* hitam gelap */
+  color: #fff;
+  padding: 3rem 1rem 1rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.footer-section {
   text-align: center;
 }
-.download h3 {
-  font-size: 1.6rem;
-  letter-spacing: -0.3px;
-}
-.download p {
-  margin-bottom: 1.5rem;
-  color: #444;
-  letter-spacing: 0.2px;
+
+.footer-section h5 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #b07a36; /* cokelat muda */
 }
 
-/* ===== FOOTER ===== */
-footer {
-  background: #fafafa;
-  padding: 1.5rem 0;
+.footer-section a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0.4rem 0;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.footer-section a img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+}
+
+.footer-section a:hover {
+  color: #b07a36; /* cokelat muda */
+}
+
+.footer-bottom {
+  margin-top: 2rem;
   text-align: center;
   font-size: 0.9rem;
-  color: #777;
-  letter-spacing: 0.3px;
+  border-top: 1px solid #444;
+  padding-top: 1rem;
+  color: #ccc;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .navbar .container {
-    flex-direction: column;
-    gap: 1rem;
-  }
+/* === Fitur Section === */
+.features-section {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 60px 0;
+}
 
-  .hero .headline {
-    font-size: 2rem;
-  }
+.features-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #4a2d00;
+}
 
-  .feature-grid {
-    flex-direction: column;
-    align-items: center;
-  }
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
 
-  .btn {
-    width: 100%;
-    max-width: 300px;
-  }
+.feature-box {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px;
+  flex: 1 1 250px;
+  transition: box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feature-box h3 {
+  color: #5a3600;
+  margin-bottom: 10px;
+}
+
+/* === Download Section === */
+.download-section {
+  background-color: #fff6e6;
+  color: #222;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.download-section h2 {
+  color: #4a2d00;
+  margin-bottom: 16px;
+}
+
+.download-section p {
+  margin-bottom: 24px;
+  color: #5a5a5a;
+}
+
+.download-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.download-buttons .btn {
+  background-color: #4a2d00;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 24px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.download-buttons .btn:hover {
+  background-color: #361f00;
+}
+
+/* === Footer === */
+.footer-section {
+  background-color: #4a2d00;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-section h5 {
+  margin: 0;
+  font-weight: 400;
+}
+
+.footer-section a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+}
+
+.footer-section a i {
+  margin-right: 0.5rem;
+  color: #ff9900;
+  font-size: 1.2rem;
+}
+
+.footer-section a:hover {
+  text-shadow: 0 0 10px #ff9900;
 }
