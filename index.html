@@ -1,127 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For-BTC</title>
+  <title>NamaBrand - Solusi Digital Modern</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
-
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">MyBrand</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </nav>
-    <button id="theme-toggle" class="btn">Toggle Dark Mode</button>
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">NamaBrand</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#features">Fitur</a></li>
+          <li><a href="#download">Download</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>Welcome to For-BTC</h1>
-      <p>This is our personal space on the internet</p>
-      <a href="#about" class="btn">Explore</a>
+  <section class="hero">
+    <div class="container" data-aos="fade-up">
+      <h2 class="headline">Bangun Masa Depan Digitalmu</h2>
+      <p class="subtext">Solusi ringan dan cepat untuk kebutuhan keuangan digitalmu.</p>
+      <a href="#download" class="btn">Mulai Sekarang</a>
     </div>
   </section>
 
-  <!-- Slider Section -->
-  <section class="slider-section">
-    <div class="slider">
-      <div class="slide reveal"> 
-        <img src="images/slide1.jpg" alt="Slide 1" />
-        <div class="slide-caption">Selamat Datang di Web Saya</div>
-      </div>
-      <div class="slide reveal">
-        <img src="images/slide2.jpg" alt="Slide 2" />
-        <div class="slide-caption">Jelajahi Proyek Saya</div>
-      </div>
-      <div class="slide reveal">
-        <img src="images/slide3.jpg" alt="Slide 3" />
-        <div class="slide-caption">Gabung Sekarang!</div>
-      </div>
-      <button class="prev">‹</button>
-      <button class="next">›</button>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about" id="about">
+  <section class="features" id="features">
     <div class="container">
-      <h2>About Us</h2>
-      <p>I am a web enthusiast who loves building cool dark-themed websites. This is my personal project to show off my creativity and skills.</p>
-    </div>
-  </section>
-
-  <!-- Gallery Section -->
-  <section class="gallery" id="gallery">
-    <div class="container">
-      <h2>Gallery</h2>
-      <div class="gallery-grid">
-        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 1" />
-        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 2" />
-        <img src="https://via.placeholder.com/300x200" alt="Gallery Image 3" />
+      <h3 class="section-title" data-aos="fade-up">Fitur Unggulan</h3>
+      <div class="feature-grid">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon">
+            <!-- Icon 1: Minimalist Design -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h18v2H3zm0 4h12v2H3zm0 4h18v2H3zm0 4h12v2H3zm0 4h18v2H3z"/></svg>
+          </div>
+          <h4>Desain Minimalis</h4>
+          <p>Clean, elegan, dan fokus ke pengguna.</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon">
+            <!-- Icon 2: Responsive -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v12H4z" opacity=".3"/><path d="M22 4H2v16h20V4zm-2 14H4V6h16v12z"/></svg>
+          </div>
+          <h4>Super Responsif</h4>
+          <p>Tampilan optimal di semua perangkat.</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon">
+            <!-- Icon 3: Access -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm1 14.93V17a1 1 0 0 1-2 0v-.07A8.008 8.008 0 0 1 4.07 13H5a1 1 0 0 1 0-2h-.93A8.008 8.008 0 0 1 11 6.07V7a1 1 0 0 1 2 0v-.93A8.008 8.008 0 0 1 19.93 11H19a1 1 0 0 1 0 2h.93A8.008 8.008 0 0 1 13 16.93z"/></svg>
+          </div>
+          <h4>Akses Instan</h4>
+          <p>Tanpa login. Klik dan pakai langsung.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <form action="#" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
+  <section class="download" id="download">
+    <div class="container" data-aos="fade-up">
+      <h3>Download Sekarang</h3>
+      <p>Dapatkan file ZIP-nya langsung</p>
+      <button id="downloadBtn" class="btn">Download ZIP</button>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 OurBrand. All rights reserved.</p>
+    <div class="container">
+      <p>© 2025 NamaBrand. Semua hak dilindungi.</p>
+    </div>
   </footer>
 
-  <!-- Auth Container -->
-  <div class="auth-container">
-    <div class="auth-box">
-      <h2>Sign In</h2>
-      <form action="#">
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
-        <button type="submit" class="btn">Login</button>
-      </form>
-      <p>Don't have an account? <a href="signup.html">Sign up</a></p>
-    </div>
-  </div>
-
-  <!-- Social Media -->
-  <section class="social-media-section">
-    <div class="social-media">
-      <h3>Sam</h3>
-      <a href="https://instagram.com/samuel_mahanaim" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br />
-      <a href="mailto:samuel.sinurat05@gmail.com"><i class="fas fa-envelope"></i> Email</a><br />
-      <a href="https://linkedin.com/in/www.linkedin.com/in/samuel-mahanaim-sinurat-25736034a" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </div>
-
-    <div class="social-media">
-      <h3>Alex</h3>
-      <a href="https://instagram.com/alexander.12.27" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br />
-      <a href="mailto:emailtemen@example.com"><i class="fas fa-envelope"></i> Email</a><br />
-      <a href="https://linkedin.com/in/akun_temen" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </div>
-  </section>
-
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
   <script src="script.js"></script>
-
 </body>
 </html>
