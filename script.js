@@ -1,124 +1,111 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Typing animation di hero headline
+  const typingText = "Welcome To For-BTC";
+  let i = 0;
+  const typeTarget = document.getElementById("typing-text");
+
   function typeWriter() {
-    if (index <= text.length) {
-      headline.textContent = text.substring(0, index);
-      index++;
-      setTimeout(typeWriter, 100);
+    if (i < typingText.length) {
+      typeTarget.textContent = typingText.substring(0, i + 1);
+      i++;
+      setTimeout(typeWriter, 80);
     }
   }
 
-  // 2. Social media glow effect on hover - handled by CSS (see CSS below)
-  // Tapi bisa kasih sedikit JS buat tambah kelas tambahan kalau mau, optional
+  
+  window.addEventListener("load", typeWriter);
 
-  // 3. Suara klik tombol
-  const clickSound = new Audio('https://freesound.org/data/previews/256/256113_3263906-lq.mp3'); // contoh suara klik (asal bebas)
+  // 2. Suara klik tombol
+  const clickSound = new Audio('https://freesound.org/data/previews/256/256113_3263906-lq.mp3');
   const buttons = document.querySelectorAll('button, .btn, .prev, .next, #downloadBtn');
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      clickSound.currentTime = 0; // reset suara supaya bisa diputar ulang cepat
+      clickSound.currentTime = 0;
       clickSound.play();
     });
   });
-    AOS.init();
 
-    // Typing effect
-    const typingText = "Welcome To For-BTC";
-    let i = 0;
-    const typeTarget = document.getElementById("typing-text");
+  AOS.init();
 
-    function typeWriter() {
-      if (i < typingText.length) {
-        typeTarget.textContent = typingText.substring(0, i + 1);
-        i++;
-        setTimeout(typeWriter, 80);
+  
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const target = document.querySelector(targetId);
+
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+
+        target.classList.add('scroll-focus');
+        setTimeout(() => target.classList.remove('scroll-focus'), 1000);
       }
-    }
-
-    // Trigger after page load
-    window.addEventListener("load", typeWriter);
-
-    // Click sound effect
-    const button = [document.getElementById("click-sound"), document.getElementById("click-sound-2")];
-    const clickAudio = new Audio("click.mp3"); // ganti dengan file suara klik
-
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        clickAudio.play();
-      });
     });
   });
 
-  // Smooth scroll dengan animasi
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    const target = document.querySelector(targetId);
+  const images = document.querySelectorAll('.slider-container img');
+  let currentIndex = 0;
 
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+  function showSlide(index) {
+    images.forEach((img, i) => {
+      img.classList.remove('active');
+      if (i === index) img.classList.add('active');
+    });
+  }
 
-      // Optional animasi saat scroll ke section
-      target.classList.add('scroll-focus');
-      setTimeout(() => target.classList.remove('scroll-focus'), 1000);
-    }
-  });
-});
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showSlide(currentIndex);
+  }
 
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const targetId = link.getAttribute('href').substring(1); // hapus tanda #
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-const images = document.querySelectorAll('.slider-container img');
-let currentIndex = 0;
-
-function showSlide(index) {
-  images.forEach((img, i) => {
-    img.classList.remove('active');
-    if (i === index) img.classList.add('active');
-  });
-}
-
-function nextSlide() {
-  currentIndex = (currentIndex + 1) % images.length;
   showSlide(currentIndex);
-}
+  setInterval(nextSlide, 4000);
 
-// Tampilkan slide pertama saat load
-showSlide(currentIndex);
+  const reveals = document.querySelectorAll('.reveal-text');
+  window.addEventListener('scroll', () => {
+    reveals.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      if (top < windowHeight - 100) {
+        el.classList.add('show');
+      }
+    });
+  });
 
-// Ganti slide tiap 4 detik (bisa ubah ke 5 detik kalau mau lebih pelan)
-setInterval(nextSlide, 4000);
+  // Cursor Trail Effect
+  const cursorTrail = document.querySelector('.cursor-trail');
+  let lastMouseMove = 0;
 
-window.addEventListener('scroll', () => {
-  const winScroll = document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-  document.getElementById("progress-bar").style.width = scrolled + "%";
-});
+  document.addEventListener('mousemove', (e) => {
+    const now = Date.now();
+    // Batasi pembuatan dot agar tidak terlalu sering (misalnya, setiap 50ms)
+    if (now - lastMouseMove < 50) return;
+    lastMouseMove = now;
 
-const reveals = document.querySelectorAll('.reveal-text');
-window.addEventListener('scroll', () => {
-  reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-    if (top < windowHeight - 100) {
-      el.classList.add('show');
+    // Ambil posisi kursor relatif terhadap main-wrapper
+    const mainWrapper = document.querySelector('.main-wrapper');
+    const rect = mainWrapper.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Pastikan kursor berada di dalam main-wrapper
+    if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+      const dot = document.createElement('div');
+      dot.classList.add('cursor-dot');
+      dot.style.left = `${x}px`;
+      dot.style.top = `${y}px`;
+      cursorTrail.appendChild(dot);
+
+      // Hapus dot setelah animasi selesai
+      setTimeout(() => {
+        dot.remove();
+      }, 800); // Sesuaikan dengan durasi animasi fadeOut
     }
   });
 });
+
+// Menghapus duplikasi event listener untuk smooth scroll
+// ... existing code ...

@@ -1,193 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For-BTC</title>
-
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- AOS Animation -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body>
+  <div class="main-wrapper">
+    <div class="cursor-trail"></div>
 
-  <h1 class="logo">
-    <img src="pictures/Btc.jpg" alt="Logo" class="logo-img" />
-    For-BTC
-  </h1>
-
-  <div id="progress-bar"></div>
-
-  <body>
-    <div class="main-wrapper">
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container">
-      <h1 class="logo"><i class="fas fa-bolt"></i> For-BTC</h1>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#feature">Feature</a></li>
-        <li><a href="#download">Download</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      
-    </div>
-
-    <div class="bubbles">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero" id="home" data-aos="fade-up">
-    <div class="container">
-      <h2 class="headline" id="typing-text">Welcome To For-BTC</h2>
-      <p class="subtext">Best Solution For Your Problem</p>
-      <button class="btn" id="click-sound">Learn More</button>
-    </div>
-
-    <div class="bubbles">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    
-  </section>  
-
-  <!-- Slider -->
-  <section class="slider" id="feature">
-    <section class="features" id="feature">
-      <div class="slider-container">
-        <img src="pictures/AM.jpg" alt="Mclaren" />
-        <img src="pictures/BG.jpg" alt="lo Warna" />
-        <img src="pictures/MC.jpg" alt="Apa Bos" />
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="logo">
+          <img src="./pictures/btc_bulat.png" alt="For-BTC Logo" class="logo-img">
+        </a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Feature</a></li>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </div>
+    </nav>
 
-      <div class="bubbles">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+    <section id="home" class="hero">
+      <div class="container">
+        <h1 class="headline" id="typing-text"></h1>
+        <p class="subtext">Best Solution For Your Problem</p>
+        <button class="btn">Learn More</button>
       </div>
-
     </section>
-    
-    <section class="parallax"></section>
-  
-  <!-- Features -->
-  <section class="features" data-aos="zoom-in">
-    <div class="container">
-      <h3 class="section-title">Why Choose Us?</h3>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="icon"><i class="fas fa-lock"></i></div>
-          <h4>Safety</h4>
-          <p>Your Data Must Be Save With Us.</p>
+
+    <section class="slider">
+      <div class="slider-container">
+        <img src="./pictures/AM.jpg" class="active">
+        <img src="./pictures/BG.jpg">
+        <img src="./pictures/MC.jpg">
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="icon">🔒</div>
+            <h3>Safety</h3>
+            <p>Your Data Must Be Save With Us.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">⚡</div>
+            <h3>High Perform</h3>
+            <p>Time Fast and Stabilized.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">💬</div>
+            <h3>User Support</h3>
+            <p>Our Team Ready To Help 24/7.</p>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="icon"><i class="fas fa-bolt"></i></div>
-          <h4>High Perform</h4>
-          <p>Time Fast and Stabilized.</p>
+      </div>
+    </section>
+
+    <section id="download" class="download">
+      <div class="container">
+        <h3>Download Now</h3>
+        <button class="btn" id="downloadBtn">Download</button>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="footer-container">
+        <div class="profile-card">
+          <img src="https://via.placeholder.com/100" alt="Samuel's Photo" class="profile-photo">
+          <h5 class="profile-name">Samuel</h5>
+          <p class="profile-major">Computer Science</p>
+          <a href="https://instagram.com/samuel" class="social-link">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+            Instagram
+          </a>
+          <a href="mailto:samuel@example.com" class="social-link">
+            <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email">
+            Email
+          </a>
         </div>
-        <div class="feature-card">
-          <div class="icon"><i class="fas fa-user-friends"></i></div>
-          <h4>User Support</h4>
-          <p>Our Team Ready To Help 24/7.</p>
+        <div class="profile-card">
+          <img src="./pictures/Alex.jpg" alt="Alexander's Photo" class="profile-photo">
+          <h5 class="profile-name">Alexander</h5>
+          <p class="profile-major">Software Engineering</p>
+          <a href="https://instagram.com/alexander" class="social-link">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+            Instagram
+          </a>
+          <a href="mailto:alexander@example.com" class="social-link">
+            <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email">
+            Email
+          </a>
         </div>
       </div>
-
-      <div class="bubbles">
-        <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+      <div class="footer-bottom">
+        © 2025 For-BTC. All rights reserved.
       </div>
+    </footer>
+  </div>
 
-    </div>
-  </section>
-
-  <!-- Download -->
-  <section class="download" id="download" data-aos="fade-up">
-    <div class="container">
-      <h3>Download Now</h3>
-      <button class="btn" id="click-sound-2">Download</button>
-    </div>
-
-    <div class="bubbles">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-  </section>  
-
-  <!-- Footer -->
-  <footer id="contact" data-aos="fade-up">
-    <div class="footer-container">
-      <!-- Sosmed Orang Pertama -->
-      <div class="footer-section">
-        <h5>Follow [Samuel]</h5>
-        <a href="https://instagram.com/samuel_mahanaim" target="_blank">
-          <i class="fab fa-instagram"></i> Instagram
-        </a>
-        <a href="mailto:samuel.sinurat05@gmail.com">
-          <i class="fas fa-envelope"></i> Email
-        </a>
-      </div>
-  
-      <!-- Sosmed Orang Kedua -->
-      <div class="footer-section">
-        <h5>Follow [Alexander]</h5>
-        <a href="https://instagram.com/alexander.12.27" target="_blank">
-          <i class="fab fa-instagram"></i> Instagram
-        </a>
-        <a href="mailto:nama2@email.com">
-          <i class="fas fa-envelope"></i> Email
-        </a>
-      </div>
-    </div>
-  
-    <div class="footer-bottom">
-      &copy; 2025 For-BTC. All rights reserved.
-    </div>
-
-    <div class="bubbles">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-  </footer>  
-
-</div>
-</body>
-  
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
   <script src="script.js"></script>
-
 </body>
 </html>
