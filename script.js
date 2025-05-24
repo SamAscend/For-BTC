@@ -56,11 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
       
-      setInterval(() => {
-        currentIndex = (currentIndex + 1) % images.length;
-        showSlide(currentIndex);
-      }, 4000); // change every 4 seconds
-      
     function nextSlide() {
       currentIndex = (currentIndex + 1) % images.length;
       showSlide(currentIndex);
