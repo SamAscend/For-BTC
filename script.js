@@ -128,3 +128,31 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorTrail();
   initAOS();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cursorTrail = document.querySelector('.cursor-trail');
+  const mainWrapper = document.querySelector('.main-wrapper');
+  let lastMouseMove = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    const now = Date.now();
+    if (now - lastMouseMove < 50) return;
+    lastMouseMove = now;
+
+    const rect = mainWrapper.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+      const dot = document.createElement('div');
+      dot.classList.add('cursor-dot');
+      dot.style.left = `${x}px`;
+      dot.style.top = `${y}px`;
+      cursorTrail.appendChild(dot);
+      setTimeout(() => dot.remove(), 800);
+    }
+  });
+
+  AOS.init();
+});
+

@@ -383,8 +383,10 @@ body {
   }
   
   .scroll-focus {
-    animation: highlightSection 1s ease-in-out;
+    outline: 2px solid #ff9800;
+    transition: outline 0.5s ease-in-out;
   }
+
   
   @keyframes highlightSection {
     0% { background-color: #fff9e6; }
@@ -658,3 +660,118 @@ body {
   font-size: 2.2rem;
   margin-bottom: 20px;
 }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+header {
+  padding: 20px;
+  background-color: #1f1f1f;
+  text-align: center;
+}
+
+.nav-links a {
+  margin: 0 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.main-wrapper {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.playlist-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.column {
+  flex: 1 1 400px;
+  max-width: 500px;
+  background: #1e1e1e;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.column h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.references {
+  list-style: none;
+  padding: 0;
+}
+
+.references li {
+  background: #1e1e1e;
+  color: #ffffff; /* pastikan teks default di dalam li kelihatan */
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.references li:hover {
+  background: #292929;
+}
+
+.references a {
+  color: #00ffcc;
+  text-decoration: none;
+}
+
+.references a:hover {
+  text-decoration: underline;
+}
+
+
+.motivational-text {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cursor-trail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #00ffcc;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: fadeOut 0.8s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
