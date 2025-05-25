@@ -156,3 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
   AOS.init();
 });
 
+function adjustTextColor(backgroundColor) {
+  const brightness = calculateBrightness(backgroundColor);
+  return brightness < 128 ? 'white' : 'black';
+}

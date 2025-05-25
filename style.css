@@ -1,3 +1,10 @@
+:root {
+  --gold: #FFD700;
+  --dark: #1a1a1a;
+  --brown: #4b2e05;
+  --light-brown: #b8863b;
+}
+
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -37,7 +44,12 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
   }
+
+  .navbar a {
+    color: black;
+  }
   
+
   .logo {
     font-weight: 700;
     font-size: 0;
@@ -120,17 +132,22 @@ body {
   .btn:hover {
     background: #b8863b;
   }
-  
+
+  a:focus, .btn:focus {
+  outline: 2px dashed #FFD700;
+  outline-offset: 4px;
+}
+
   /* Slider */
   .slider {
     overflow: hidden;
     background-color: #fff;
     padding: 2rem 0;
   }
-  
-  .slider-container {
-    width: 100%;
-    max-width: 800px;
+    .slider-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-width: 800px;
     height: auto;
     overflow: hidden;
     margin: 0 auto;
@@ -145,15 +162,18 @@ body {
   }
   
   .slider-container img {
-    min-width: 100%;
-    transition: transform 0.5s ease-in-out;
-    display: none;
-    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
   }
   
   .slider-container img.active {
-    display: block;
+    opacity: 1;
+    position: relative;
   }
+  
   
   @keyframes scroll {
     0% {
@@ -775,3 +795,7 @@ body {
   }
 }
 
+.info-card h3,
+.info-card p {
+  color: black !important;
+}
