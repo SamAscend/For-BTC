@@ -17,3 +17,34 @@ function showSlide(index) {
 setInterval(() => {
   showSlide(currentIndex + 1);
 }, 3000);
+
+// Text typing animation
+const text = "Tetap semangat, karena kamu lebih kuat dari yang kamu kira.";
+let i = 0;
+
+function typeText() {
+  if (i < text.length) {
+    document.getElementById("typed-motivation").textContent += text.charAt(i);
+    i++;
+    setTimeout(typeText, 50);
+  }
+}
+
+window.addEventListener("load", () => {
+  typeText();
+});
+
+// Back to top button
+const backToTop = document.getElementById("backToTop");
+
+window.onscroll = () => {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    backToTop.style.display = "block";
+  } else {
+    backToTop.style.display = "none";
+  }
+};
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
