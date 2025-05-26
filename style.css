@@ -9,10 +9,15 @@ body {
     margin: 0;
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #1a1a1a;
     background: #fff;
+    color: black;
   }
   
+  h1, h2, h3, h4, h5, h6, p, span, li, a {
+    color: black;
+  }
+  
+
   a {
     color: inherit;
     text-decoration: none;
@@ -799,3 +804,52 @@ body {
 .info-card p {
   color: black !important;
 }
+
+.advice-section {
+  background: #fff8dc;
+  padding: 60px 20px;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+#advice-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#advice-form input,
+#advice-form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  resize: vertical;
+}
+
+#advice-form button {
+  background: var(--light-brown);
+  color: black;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#advice-form button:hover {
+  background: var(--brown);
+  color: white;
+}
+
+.motivation {
+  margin-top: 40px;
+  font-style: italic;
+  font-size: 18px;
+  max-width: 600px;
+  margin-inline: auto;
+}
+

@@ -160,3 +160,77 @@ function adjustTextColor(backgroundColor) {
   const brightness = calculateBrightness(backgroundColor);
   return brightness < 128 ? 'white' : 'black';
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const adviceForm = document.getElementById('advice-form');
+  if (adviceForm) {
+    adviceForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value || 'Anonim';
+      const message = document.getElementById('message').value;
+
+      alert(`Terima kasih atas masukannya, ${name}!\n\n"${message}"`);
+      adviceForm.reset();
+    });
+  }
+});
+
+const adviceForm = document.getElementById('advice-form');
+let feedbackList = JSON.parse(localStorage.getItem('feedback')) || [];
+
+adviceForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value || 'Anonim';
+  const message = document.getElementById('message').value.trim();
+
+  if (!message) {
+    alert('Masukan atau saran tidak boleh kosong!');
+    return;
+  }
+
+  const feedback = {
+    name,
+    message,
+    time: new Date().toLocaleString()
+  };
+  feedbackList.push(feedback);
+  localStorage.setItem('feedback', JSON.stringify(feedbackList));
+
+  // Tombol animasi kirim
+  const submitBtn = adviceForm.querySelector('button');
+  submitBtn.textContent = 'Terkirim!';
+  submitBtn.style.backgroundColor = '#4CAF50';
+
+  setTimeout(() => {
+    submitBtn.textContent = 'Kirim';
+    submitBtn.style.backgroundColor = 'var(--light-brown)';
+  }, 2000);
+
+  alert(`Terima kasih atas masukannya, ${name}!\n\n"${message}"`);
+  adviceForm.reset();
+
+  // Scroll ke motivasi
+  document.querySelector('.motivation').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Efek typewriter motivasi
+const motivationText = `Setiap perjalanan butuh waktu. Tidak ada kesuksesan yang instan — kecuali Indomie.
+Tapi hidup, butuh proses. Tetap semangat dan teruslah melangkah, meski pelan,
+karena pelan-pelan pun tetap berarti maju.`;
+
+const motivationElem = document.querySelector('.motivation p');
+if (motivationElem) {
+  let i = 0;
+  const speed = 40;
+
+  function typeWriter() {
+    if (i < motivationText.length) {
+      motivationElem.innerHTML += motivationText.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  motivationElem.innerHTML = '';
+  typeWriter();
+}
