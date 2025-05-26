@@ -13,21 +13,19 @@
     <div class="cursor-trail"></div>
 
     <!-- Navbar -->
-   <!-- Navbar -->
-<nav class="navbar">
-  <div class="container">
-    <a href="#" class="logo">
-      <img src="./pictures/btc_bulat.png" alt="For-BTC Logo" class="logo-img" />
-    </a>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#features">Feature</a></li>
-      <li><a href="#download">Download</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="logo">
+          <img src="./pictures/btc_bulat.png" alt="For-BTC Logo" class="logo-img" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Feature</a></li>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -40,7 +38,6 @@
         <button onclick="window.location.href='playlist.html'" class="btn">Playlist</button>
       </div>
     </section>
-
 
     <!-- Slider -->
     <section class="slider">
@@ -106,7 +103,6 @@
       </div>
     </section>
     
-
     <!-- Footer -->
     <footer id="contact">
       <div class="footer-container">
@@ -144,12 +140,26 @@
     </footer>
   </div>
 
+  <!-- Music toggle button -->
   <button id="music-toggle" class="btn nav-music">🎵 Music</button>
 
-<!-- Container player YouTube (hidden) -->
-<div id="yt-player" style="display:none;"></div>
+  <!-- Hidden YouTube player -->
+  <div id="yt-player" style="display:none;">
+    <iframe id="yt-iframe"
+      width="0"
+      height="0"
+      src="https://www.youtube.com/embed/nNCD1BMcq5c?autoplay=1&loop=1&playlist=nNCD1BMcq5c"
+      title="YouTube Music Player"
+      frameborder="0"
+      allow="autoplay"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-<script src="script.js"></script>
+  <a href="secret.html" id="secretBtn" title="Masuk ke halaman rahasia">🕵️‍♂️</a>
+
+  <!-- Script -->
+  <script src="script.js"></script>
 
 </body>
 </html>

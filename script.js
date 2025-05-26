@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initAdviceForm();
   initMotivationText();
   initClockWidget();
-initScrollNotification();
-showWelcomeToast();
-initBackgroundMusic();
-autoDarkModeByTime();
+  initScrollNotification();
+  showWelcomeToast();
+  initBackgroundMusic();
+  autoDarkModeByTime();
 });
 
 /* ============================
@@ -213,6 +213,10 @@ karena pelan-pelan pun tetap berarti maju.`;
 
   typeWriter();
 }
+
+/* ============================
+   10. Clock Widget
+============================ */
 function initClockWidget() {
   const clock = document.createElement('div');
   clock.className = 'clock-widget';
@@ -224,6 +228,9 @@ function initClockWidget() {
   }, 1000);
 }
 
+/* ============================
+   11. Scroll Notification
+============================ */
 function initScrollNotification() {
   const target = document.getElementById('download');
   let shown = false;
@@ -247,6 +254,9 @@ function initScrollNotification() {
   }
 }
 
+/* ============================
+   12. Welcome Toast
+============================ */
 function showWelcomeToast() {
   if (!sessionStorage.getItem('welcomed')) {
     const toast = document.createElement('div');
@@ -258,6 +268,9 @@ function showWelcomeToast() {
   }
 }
 
+/* ============================
+   13. Background Music
+============================ */
 function initBackgroundMusic() {
   let player;
   let playing = false;
@@ -265,24 +278,22 @@ function initBackgroundMusic() {
   const btn = document.getElementById('music-toggle');
   if (!btn) return;
 
-  // Load YouTube Iframe API
   if (!window.YT) {
     const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api"; // Wajib ini, bukan link video biasa
+    tag.src = "https://www.youtube.com/iframe_api";
     document.head.appendChild(tag);
   }
 
-  // Fungsi global untuk YouTube API
   window.onYouTubeIframeAPIReady = function () {
     player = new YT.Player('yt-player', {
       height: '0',
       width: '0',
-      videoId: 'xizN47Box_Y',       // ← ID dari link YouTube kamu
+      videoId: 'xizN47Box_Y',
       playerVars: {
         autoplay: 0,
         loop: 1,
-        playlist: 'xizN47Box_Y',    // ← untuk enable loop
-        mute: 0                     // biar suaranya keluar
+        playlist: 'xizN47Box_Y',
+        mute: 0
       },
       events: {
         'onReady': onPlayerReady
@@ -305,20 +316,13 @@ function initBackgroundMusic() {
   }
 }
 
-// Jalankan saat DOM siap
-document.addEventListener('DOMContentLoaded', () => {
-  initBackgroundMusic();
-});
-
 let ytApiReady = false;
-
 window.onYouTubeIframeAPIReady = function () {
   ytApiReady = true;
-  initBackgroundMusic(); // baru panggil di sini!
+  initBackgroundMusic();
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Cek terus sampe API siap
   const waitForYT = setInterval(() => {
     if (ytApiReady) {
       clearInterval(waitForYT);
@@ -326,6 +330,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 100);
 });
 
+/* ============================
+   14. Auto Dark Mode by Time
+============================ */
 function autoDarkModeByTime() {
   const hour = new Date().getHours();
   const html = document.documentElement;
@@ -335,3 +342,4 @@ function autoDarkModeByTime() {
     html.classList.remove('dark');
   }
 }
+
