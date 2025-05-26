@@ -134,6 +134,14 @@ body {
     transition: 0.3s;
   }
   
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* atau 10px, bebas */
+  }
+  
+  
   .btn:hover {
     background: #b8863b;
   }
@@ -851,5 +859,67 @@ body {
   font-size: 18px;
   max-width: 600px;
   margin-inline: auto;
+}
+
+.clock-widget {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-family: monospace;
+  z-index: 999;
+  font-size: 0.9rem;
+}
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #4b2e05;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  animation: fadeInOut 3s ease;
+  font-size: 0.95rem;
+}
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+
+.music-float {
+    position: fixed;
+    bottom: 3rem;  /* lebih ke atas */
+    right: 2rem;   /* agak masuk ke dalam */
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    transition: 0.3s ease;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: 1px solid #fff;
+  }
+  
+.music-float:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+
+.nav-music {
+  background: transparent;
+  color: white;
+  border: 1px solid #fff;
+  padding: 0.3rem 0.8rem;
+  margin-left: 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
 }
 
