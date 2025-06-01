@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For-BTC</title>
+  <title>Portofolio Kami</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -16,13 +16,13 @@
     <nav class="navbar">
       <div class="container">
         <a href="#" class="logo">
-          <img src="./pictures/btc_bulat.png" alt="For-BTC Logo" class="logo-img" />
+          <img src="./pictures/btc_bulat.png" alt="Logo Kami" class="logo-img" />
         </a>
         <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#features">Feature</a></li>
-          <li><a href="#download">Download</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#features">Tentang Kami</a></li>
+          <li><a href="#download">Portofolio</a></li>
+          <li><a href="#contact">Kontak</a></li>
         </ul>
       </div>
     </nav>
@@ -30,12 +30,12 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="container">
-        <h1 class="headline" id="typing-text"></h1>
-        <p class="subtext">A Platform Where You Can Know More About Our Life Story</p>
-        <button onclick="window.location.href='learn-more.html'" class="btn">Learn More</button>
-        <button onclick="window.location.href='about.html'" class="btn">About Us</button>
-        <button onclick="window.location.href='references.html'" class="btn">References</button>
-        <button onclick="window.location.href='playlist.html'" class="btn">Playlist</button>
+        <h1 class="headline" id="typing-text">Mahasiswa IT. Pencari Ilmu. Pecinta Bitcoin.</h1>
+        <p class="subtext">Perjalanan dua mahasiswa dalam dunia teknologi, coding, dan ketertarikan terhadap Bitcoin sebagai aset masa depan.</p>
+        <button onclick="window.location.href='learn-more.html'" class="btn">Cerita Kami</button>
+        <button onclick="window.location.href='about.html'" class="btn">Profil Lengkap</button>
+        <button onclick="window.location.href='references.html'" class="btn">Referensi</button>
+        <button onclick="window.location.href='playlist.html'" class="btn">Playlist Kami</button>
       </div>
     </section>
 
@@ -54,55 +54,100 @@
     <!-- Features -->
     <section id="features" class="features">
       <div class="container">
-        <h2 class="section-title">Why Choose Us?</h2>
+        <h2 class="section-title">Tentang Kami</h2>
         <div class="feature-grid">
           <div class="feature-card">
             <div class="icon">💻</div>
-            <h3>Project-Based Learning</h3>
-            <p>Kami membangun website ini sebagai hasil nyata dari pembelajaran berbasis proyek.</p>
+            <h3>Mahasiswa IT</h3>
+            <p>Kami adalah dua mahasiswa dari jurusan yang berbeda: Computer Science & Software Engineering. Tapi kami dipertemukan oleh passion yang sama: teknologi dan eksplorasi aset digital.</p>
           </div>
           <div class="feature-card">
-            <div class="icon">🧠</div>
-            <h3>Problem Solving Oriented</h3>
-            <p>Web ini dirancang untuk menyelesaikan masalah nyata secara efisien dan efektif.</p>
+            <div class="icon">🪙</div>
+            <h3>Ketertarikan pada Bitcoin</h3>
+            <p>Bitcoin bukan hanya aset, tapi cerita kami dalam memahami dunia keuangan digital dan mengelola risiko sejak muda.</p>
           </div>
           <div class="feature-card">
-            <div class="icon">👨‍💻</div>
-            <h3>Team Collaboration</h3>
-            <p>Dibuat melalui kolaborasi antara dua mahasiswa dengan latar belakang berbeda, namun tujuan yang sama.</p>
+            <div class="icon">🎮</div>
+            <h3>Hobi & Keseharian</h3>
+            <p>Dari coding, gaming, mendesain UI, hingga olahraga—kami selalu mencari cara menyeimbangkan logika dan kreativitas.</p>
           </div>
           <div class="feature-card">
-            <div class="icon">🔒</div>
-            <h3>Safety</h3>
-            <p>Your data must be safe with us.</p>
+            <div class="icon">⚙️</div>
+            <h3>Proyek Nyata</h3>
+            <p>Website ini kami buat untuk menunjukkan bahwa belajar bukan hanya teori, tapi juga aksi nyata dan kolaborasi.</p>
           </div>
           <div class="feature-card">
-            <div class="icon">⚡</div>
-            <h3>High Performance</h3>
-            <p>Fast and stable performance for all users.</p>
+            <div class="icon">🌐</div>
+            <h3>Berpikir Global</h3>
+            <p>Kami percaya teknologi adalah jembatan yang bisa membawa siapa saja menuju masa depan yang lebih cerah.</p>
           </div>
           <div class="feature-card">
-            <div class="icon">💬</div>
-            <h3>User Support</h3>
-            <p>Our team is ready to help 24/7.</p>
+            <div class="icon">🤝</div>
+            <h3>Koneksi & Kolaborasi</h3>
+            <p>Kami terbuka untuk kolaborasi, koneksi, dan eksplorasi bersama komunitas digital dan teknologi masa kini.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Tambahkan di section yang sesuai -->
+<div class="chart-container">
+  <canvas id="btcChart"></canvas>
+</div>
+
+<div class="quote-container">
+  <p id="quoteDisplay">Klik tombol untuk motivasi hari ini</p>
+  <button id="newQuoteBtn">🎯 Dapatkan Quote</button>
+</div>
+
+    <!-- Quote Section -->
+    <section id="quote" class="quote-section">
+      <blockquote id="dailyQuote"></blockquote>
+    </section>
+
+    <!-- Filter Portfolio -->
+    <section id="portfolio" class="portfolio-section">
+      <h2>Portofolio Karya</h2>
+      <div id="filterButtons">
+        <button class="filter-btn" onclick="filterSelection('all')">All</button>
+        <button class="filter-btn" onclick="filterSelection('web')">Web</button>
+        <button class="filter-btn" onclick="filterSelection('btc')">Bitcoin</button>
+        <button class="filter-btn" onclick="filterSelection('hobby')">Hobbies</button>
+      </div>
+      <div class="portfolio-items">
+        <div class="portfolio-item web">Website Landing Page</div>
+        <div class="portfolio-item btc">Bitcoin Article Analysis</div>
+        <div class="portfolio-item hobby">Guitar Cover App</div>
+        <div class="portfolio-item btc">Crypto Price Tracker</div>
+      </div>
+    </section>
+
+    <!-- Bitcoin Chart Section -->
+    <section id="btcChartSection">
+      <h2>Bitcoin Simulasi Chart</h2>
+      <canvas id="btcChart" width="600" height="400"></canvas>
+    </section>
+
+    <!-- Fun Fact Section -->
+    <section id="funFactSection" class="fun-fact">
+      <h2>Fun Fact Tentang Bitcoin</h2>
+      <p id="funFact"></p>
+      <button onclick="showFunFact()">Tampilkan Fakta Menarik</button>
+    </section>
+
     <!-- Download -->
     <section id="download" class="download">
       <div class="container">
-        <h3>Download Now</h3>
+        <h3>Unduh Portofolio Kami</h3>
         <div class="btn-group">
           <a href="assets/pdf/For-BTC.pdf" download>
             <button class="btn" id="downloadBtn">Download</button>
           </a>
-          <a href="advice.html" class="btn">Advice</a>
+          <a href="advice.html" class="btn">Berikan Saran</a>
         </div>
       </div>
     </section>
-    
+
     <!-- Footer -->
     <footer id="contact">
       <div class="footer-container">
@@ -135,8 +180,9 @@
         </div>
       </div>
       <div class="footer-bottom">
-        © 2025 For-BTC. All rights reserved.
+        © 2025 Portfolio by Samuel & Alexander. All rights reserved.
       </div>
+
     </footer>
   </div>
 
@@ -159,7 +205,7 @@
   <a href="secret.html" id="secretBtn" title="Masuk ke halaman rahasia">🕵️‍♂️</a>
 
   <!-- Script -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>

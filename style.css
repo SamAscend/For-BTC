@@ -944,3 +944,160 @@ body {
   background-color: #222;
   transform: scale(1.1);
 }
+
+/* Modal Overlay */
+#btcOverlay {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Box */
+#btcModal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #111;
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+#btcModal .close {
+  position: absolute;
+  top: 10px; right: 15px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#btcModal .close:hover {
+  color: #ffcc00;
+}
+
+/* ==== FUN FACT SECTION ==== */
+#funFactSection {
+  background: #111;
+  padding: 40px 20px;
+  border-radius: 20px;
+  margin: 40px auto;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.2);
+  max-width: 800px;
+}
+
+#funFactSection h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ffcc00;
+}
+
+#funFactSection button {
+  background-color: transparent;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#funFactSection button:hover {
+  background-color: #ffcc00;
+  color: black;
+}
+
+
+/* ==== PORTOFOLIO SECTION ==== */
+#portfolioSection {
+  background: #1a1a1a;
+  padding: 40px 20px;
+  border-radius: 20px;
+  margin: 40px auto;
+  color: white;
+  max-width: 1000px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+#portfolioSection h2 {
+  color: #ffcc00;
+  font-size: 26px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* FILTER BUTTONS */
+.filter-btn {
+  background: #222;
+  color: #ffcc00;
+  border: 1px solid #ffcc00;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #ffcc00;
+  color: #000;
+}
+
+.filter-btn.active {
+  background-color: #ffcc00;
+  color: #000;
+}
+
+
+/* ==== CHART SECTION ==== */
+#chartSection {
+  background: #111;
+  padding: 40px 20px;
+  margin: 40px auto;
+  border-radius: 20px;
+  max-width: 1000px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  color: white;
+  text-align: center;
+}
+
+#chartSection h2 {
+  color: #ffcc00;
+  margin-bottom: 20px;
+}
+
+.portfolio-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.portfolio-item {
+  background: #222;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 200px;
+  text-align: center;
+  display: none; /* Biar bisa diatur dari JS */
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+}
+
+.filter-btn.active {
+  background-color: #ffcc00;
+  color: #000;
+}

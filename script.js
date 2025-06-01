@@ -11,13 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
   initClockWidget();
   initScrollNotification();
   showWelcomeToast();
-  initBackgroundMusic();
   autoDarkModeByTime();
+  setupFadeIn();
+  setupSmoothScroll();
+  setupCardHover();
+  simulateBTCPrice();
+  initBTCChart();         // 👈 Tambahin ini
+  initRandomQuote();      // 👈 Dan ini juga
 });
 
-/* ============================
-   1. Typing Text Effect
-============================ */
+
+// Typing animation for intro section
+window.addEventListener("load", () => {
+  typeQuote();
+});
+
 function initTyping() {
   const typingText = "Welcome To For-BTC";
   let i = 0;
@@ -31,12 +39,9 @@ function initTyping() {
     }
   }
 
-  window.addEventListener("load", typeWriter);
+  typeWriter();
 }
 
-/* ============================
-   2. Button Click Sound
-============================ */
 function initClickSound() {
   const clickSound = new Audio('https://freesound.org/data/previews/256/256113_3263906-lq.mp3');
   const buttons = document.querySelectorAll('button, .btn, .prev, .next, #downloadBtn');
@@ -49,9 +54,6 @@ function initClickSound() {
   });
 }
 
-/* ============================
-   3. Smooth Scroll
-============================ */
 function initSmoothScroll() {
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', function (e) {
@@ -68,9 +70,6 @@ function initSmoothScroll() {
   });
 }
 
-/* ============================
-   4. Image Slider
-============================ */
 function initSlider() {
   const slides = document.querySelectorAll('.slider-container img');
   let currentSlide = 0;
@@ -90,9 +89,6 @@ function initSlider() {
   setInterval(nextSlide, 4000);
 }
 
-/* ============================
-   5. Reveal on Scroll
-============================ */
 function initRevealOnScroll() {
   const reveals = document.querySelectorAll('.reveal-text');
 
@@ -108,9 +104,6 @@ function initRevealOnScroll() {
   });
 }
 
-/* ============================
-   6. Cursor Trail Effect
-============================ */
 function initCursorTrail() {
   const cursorTrail = document.querySelector('.cursor-trail');
   const mainWrapper = document.querySelector('.main-wrapper');
@@ -139,16 +132,10 @@ function initCursorTrail() {
   });
 }
 
-/* ============================
-   7. AOS Animation Init
-============================ */
 function initAOS() {
   AOS.init();
 }
 
-/* ============================
-   8. Advice Form Handler
-============================ */
 function initAdviceForm() {
   const adviceForm = document.getElementById('advice-form');
   if (!adviceForm) return;
@@ -188,9 +175,6 @@ function initAdviceForm() {
   });
 }
 
-/* ============================
-   9. Motivational Typing
-============================ */
 function initMotivationText() {
   const motivationElem = document.querySelector('.motivation p');
   if (!motivationElem) return;
@@ -214,9 +198,6 @@ karena pelan-pelan pun tetap berarti maju.`;
   typeWriter();
 }
 
-/* ============================
-   10. Clock Widget
-============================ */
 function initClockWidget() {
   const clock = document.createElement('div');
   clock.className = 'clock-widget';
@@ -228,9 +209,6 @@ function initClockWidget() {
   }, 1000);
 }
 
-/* ============================
-   11. Scroll Notification
-============================ */
 function initScrollNotification() {
   const target = document.getElementById('download');
   let shown = false;
@@ -254,9 +232,6 @@ function initScrollNotification() {
   }
 }
 
-/* ============================
-   12. Welcome Toast
-============================ */
 function showWelcomeToast() {
   if (!sessionStorage.getItem('welcomed')) {
     const toast = document.createElement('div');
@@ -268,21 +243,12 @@ function showWelcomeToast() {
   }
 }
 
-/* ============================
-   13. Background Music
-============================ */
 function initBackgroundMusic() {
   let player;
   let playing = false;
 
   const btn = document.getElementById('music-toggle');
   if (!btn) return;
-
-  if (!window.YT) {
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.head.appendChild(tag);
-  }
 
   window.onYouTubeIframeAPIReady = function () {
     player = new YT.Player('yt-player', {
@@ -296,43 +262,34 @@ function initBackgroundMusic() {
         mute: 0
       },
       events: {
-        'onReady': onPlayerReady
+        'onReady': function () {
+          btn.addEventListener('click', () => {
+            if (playing) {
+              player.pauseVideo();
+              btn.textContent = '🎵 Music';
+            } else {
+              player.setVolume(100);
+              player.playVideo();
+              btn.textContent = '🔊 Playing';
+            }
+            playing = !playing;
+          });
+        }
       }
     });
   };
 
-  function onPlayerReady(event) {
-    btn.addEventListener('click', () => {
-      if (playing) {
-        player.pauseVideo();
-        btn.textContent = '🎵 Music';
-      } else {
-        player.setVolume(100);
-        player.playVideo();
-        btn.textContent = '🔊 Playing';
-      }
-      playing = !playing;
-    });
+  if (!window.YT) {
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+  } else {
+    window.onYouTubeIframeAPIReady();
   }
 }
 
-let ytApiReady = false;
-window.onYouTubeIframeAPIReady = function () {
-  ytApiReady = true;
-  initBackgroundMusic();
-};
+initBackgroundMusic(); // run it
 
-document.addEventListener('DOMContentLoaded', () => {
-  const waitForYT = setInterval(() => {
-    if (ytApiReady) {
-      clearInterval(waitForYT);
-    }
-  }, 100);
-});
-
-/* ============================
-   14. Auto Dark Mode by Time
-============================ */
 function autoDarkModeByTime() {
   const hour = new Date().getHours();
   const html = document.documentElement;
@@ -343,3 +300,192 @@ function autoDarkModeByTime() {
   }
 }
 
+function typeQuote() {
+  const typingText = "Dua mahasiswa. Satu ketertarikan. Bitcoin sebagai petualangan pertama.";
+  let typingIndex = 0;
+  const typingSpeed = 60;
+  const typingElement = document.getElementById("typing-effect");
+
+  function typeWriter() {
+    if (typingIndex < typingText.length) {
+      typingElement.innerHTML += typingText.charAt(typingIndex);
+      typingIndex++;
+      setTimeout(typeWriter, typingSpeed);
+    }
+  }
+
+  if (typingElement) typeWriter();
+}
+
+function setupFadeIn() {
+  const fadeElements = document.querySelectorAll(".fade-in");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  fadeElements.forEach(el => observer.observe(el));
+}
+
+function setupSmoothScroll() {
+  const links = document.querySelectorAll("nav a[href^='#']");
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+}
+
+function setupCardHover() {
+  const cards = document.querySelectorAll(".card");
+  cards.forEach(card => {
+    card.addEventListener("mouseenter", () => card.classList.add("hovered"));
+    card.addEventListener("mouseleave", () => card.classList.remove("hovered"));
+  });
+}
+
+function simulateBTCPrice() {
+  const priceBox = document.getElementById("btc-price");
+  if (!priceBox) return;
+
+  let fakePrice = 68300;
+  setInterval(() => {
+    const fluctuation = (Math.random() - 0.5) * 50;
+    fakePrice += fluctuation;
+    priceBox.innerText = `BTC Sim: $${fakePrice.toFixed(2)}`;
+  }, 2000);
+}
+
+// Modal Bitcoin Fun Fact
+document.addEventListener('DOMContentLoaded', function () {
+  const showFactBtn = document.getElementById('showFactBtn');
+  if (!showFactBtn) return;
+
+  const modal = document.createElement('div');
+  const overlay = document.createElement('div');
+
+  modal.id = 'btcModal';
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Fakta Menarik Tentang Bitcoin</h2>
+      <p>Bitcoin diciptakan oleh seseorang atau sekelompok orang dengan nama samaran Satoshi Nakamoto pada tahun 2009.</p>
+    </div>
+  `;
+
+  overlay.id = 'btcOverlay';
+  document.body.appendChild(overlay);
+  document.body.appendChild(modal);
+
+  const closeBtn = modal.querySelector('.close');
+
+  showFactBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+    overlay.style.display = 'block';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    overlay.style.display = 'none';
+  });
+
+  overlay.addEventListener('click', () => {
+    modal.style.display = 'none';
+    overlay.style.display = 'none';
+  });
+});
+
+// Filter Portfolio
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+
+    const filter = this.getAttribute('data-filter');
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      item.style.display = (filter === 'all' || item.classList.contains(filter)) ? 'block' : 'none';
+    });
+  });
+});
+
+function filterSelection(category) {
+  let items = document.getElementsByClassName("portfolio-item");
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = category === "all" || items[i].classList.contains(category) ? "block" : "none";
+  }
+
+  const buttons = document.querySelectorAll(".filter-btn");
+  buttons.forEach(btn => btn.classList.remove("active"));
+  event.target.classList.add("active");
+}
+
+window.onload = function () {
+  filterSelection('all');
+};
+
+function initBTCChart() {
+  const ctx = document.getElementById('btcChart');
+  if (!ctx) return;
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      datasets: [{
+        label: 'BTC Portfolio (%)',
+        data: [12, 19, 3, 5, 2],
+        backgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          '#4BC0C0',
+          '#9966FF'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function(value) {
+              return value + '%';
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+function initRandomQuote() {
+  const quotes = [
+    "Jangan lari dari pasar, pelajari polanya.",
+    "Volatilitas adalah sahabat investor sejati.",
+    "BTC turun? Waktu yang tepat buat riset, bukan panik.",
+    "Bitcoin diciptakan bukan untuk yang lemah hati.",
+    "Market merah itu diskon buat yang cerdas."
+  ];
+
+  const display = document.getElementById('quoteDisplay');
+  const btn = document.getElementById('newQuoteBtn');
+
+  if (!btn || !display) return;
+
+  btn.addEventListener('click', () => {
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    display.textContent = `"${randomQuote}"`;
+  });
+}
