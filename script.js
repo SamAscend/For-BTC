@@ -16,20 +16,20 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSmoothScroll();
   setupCardHover();
   simulateBTCPrice();
-  initBTCChart();         // 👈 Tambahin ini
-  initRandomQuote();      // 👈 Dan ini juga
+  initBTCChart();
+  initRandomQuote();
+  initBackgroundMusic();
+  initModalFunFact();
+  initPortfolioFilter();
 });
 
-
-// Typing animation for intro section
-window.addEventListener("load", () => {
-  typeQuote();
-});
-
+// Typing animation intro (if element exists)
 function initTyping() {
+  const typeTarget = document.getElementById("typing-text");
+  if (!typeTarget) return;
+
   const typingText = "Welcome To For-BTC";
   let i = 0;
-  const typeTarget = document.getElementById("typing-text");
 
   function typeWriter() {
     if (i < typingText.length) {
@@ -55,7 +55,10 @@ function initClickSound() {
 }
 
 function initSmoothScroll() {
-  document.querySelectorAll('.nav-links a').forEach(link => {
+  const links = document.querySelectorAll('.nav-links a');
+  if (!links.length) return;
+
+  links.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href');
@@ -72,6 +75,8 @@ function initSmoothScroll() {
 
 function initSlider() {
   const slides = document.querySelectorAll('.slider-container img');
+  if (!slides.length) return;
+
   let currentSlide = 0;
 
   function showSlide(index) {
@@ -91,15 +96,12 @@ function initSlider() {
 
 function initRevealOnScroll() {
   const reveals = document.querySelectorAll('.reveal-text');
+  if (!reveals.length) return;
 
   window.addEventListener('scroll', () => {
     reveals.forEach(el => {
       const top = el.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-
-      if (top < windowHeight - 100) {
-        el.classList.add('show');
-      }
+      if (top < window.innerHeight - 100) el.classList.add('show');
     });
   });
 }
@@ -107,9 +109,9 @@ function initRevealOnScroll() {
 function initCursorTrail() {
   const cursorTrail = document.querySelector('.cursor-trail');
   const mainWrapper = document.querySelector('.main-wrapper');
-  let lastMouseMove = 0;
-
   if (!cursorTrail || !mainWrapper) return;
+
+  let lastMouseMove = 0;
 
   document.addEventListener('mousemove', (e) => {
     const now = Date.now();
@@ -133,7 +135,7 @@ function initCursorTrail() {
 }
 
 function initAOS() {
-  AOS.init();
+  if (typeof AOS !== 'undefined') AOS.init();
 }
 
 function initAdviceForm() {
@@ -144,19 +146,17 @@ function initAdviceForm() {
 
   adviceForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('name').value || 'Anonim';
-    const message = document.getElementById('message').value.trim();
+    const name = document.getElementById('name')?.value || 'Anonim';
+    const message = document.getElementById('message')?.value.trim();
 
-    if (!message) {
-      alert('Masukan atau saran tidak boleh kosong!');
-      return;
-    }
+    if (!message) return alert('Masukan atau saran tidak boleh kosong!');
 
     const feedback = {
       name,
       message,
       time: new Date().toLocaleString()
     };
+
     feedbackList.push(feedback);
     localStorage.setItem('feedback', JSON.stringify(feedbackList));
 
@@ -179,19 +179,16 @@ function initMotivationText() {
   const motivationElem = document.querySelector('.motivation p');
   if (!motivationElem) return;
 
-  const motivationText = `Setiap perjalanan butuh waktu. Tidak ada kesuksesan yang instan — kecuali Indomie.
-Tapi hidup, butuh proses. Tetap semangat dan teruslah melangkah, meski pelan,
-karena pelan-pelan pun tetap berarti maju.`;
+  const text = `Setiap perjalanan butuh waktu. Tidak ada kesuksesan yang instan — kecuali Indomie.\nTapi hidup, butuh proses. Tetap semangat dan teruslah melangkah, meski pelan,\nkarena pelan-pelan pun tetap berarti maju.`;
 
   let i = 0;
-  const speed = 40;
   motivationElem.innerHTML = '';
 
   function typeWriter() {
-    if (i < motivationText.length) {
-      motivationElem.innerHTML += motivationText.charAt(i);
+    if (i < text.length) {
+      motivationElem.innerHTML += text.charAt(i);
       i++;
-      setTimeout(typeWriter, speed);
+      setTimeout(typeWriter, 40);
     }
   }
 
@@ -211,9 +208,9 @@ function initClockWidget() {
 
 function initScrollNotification() {
   const target = document.getElementById('download');
-  let shown = false;
-
   if (!target) return;
+
+  let shown = false;
 
   window.addEventListener('scroll', () => {
     const top = target.getBoundingClientRect().top;
@@ -244,23 +241,17 @@ function showWelcomeToast() {
 }
 
 function initBackgroundMusic() {
-  let player;
-  let playing = false;
-
   const btn = document.getElementById('music-toggle');
   if (!btn) return;
+
+  let player, playing = false;
 
   window.onYouTubeIframeAPIReady = function () {
     player = new YT.Player('yt-player', {
       height: '0',
       width: '0',
       videoId: 'xizN47Box_Y',
-      playerVars: {
-        autoplay: 0,
-        loop: 1,
-        playlist: 'xizN47Box_Y',
-        mute: 0
-      },
+      playerVars: { autoplay: 0, loop: 1, playlist: 'xizN47Box_Y' },
       events: {
         'onReady': function () {
           btn.addEventListener('click', () => {
@@ -288,47 +279,21 @@ function initBackgroundMusic() {
   }
 }
 
-initBackgroundMusic(); // run it
-
 function autoDarkModeByTime() {
   const hour = new Date().getHours();
   const html = document.documentElement;
-  if (hour >= 19 || hour <= 6) {
-    html.classList.add('dark');
-  } else {
-    html.classList.remove('dark');
-  }
-}
-
-function typeQuote() {
-  const typingText = "Dua mahasiswa. Satu ketertarikan. Bitcoin sebagai petualangan pertama.";
-  let typingIndex = 0;
-  const typingSpeed = 60;
-  const typingElement = document.getElementById("typing-effect");
-
-  function typeWriter() {
-    if (typingIndex < typingText.length) {
-      typingElement.innerHTML += typingText.charAt(typingIndex);
-      typingIndex++;
-      setTimeout(typeWriter, typingSpeed);
-    }
-  }
-
-  if (typingElement) typeWriter();
+  html.classList.toggle('dark', hour >= 19 || hour <= 6);
 }
 
 function setupFadeIn() {
   const fadeElements = document.querySelectorAll(".fade-in");
+  if (!fadeElements.length) return;
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
+      if (entry.isIntersecting) entry.target.classList.add("show");
     });
-  }, {
-    threshold: 0.1
-  });
+  }, { threshold: 0.1 });
 
   fadeElements.forEach(el => observer.observe(el));
 }
@@ -339,16 +304,13 @@ function setupSmoothScroll() {
     link.addEventListener("click", e => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
+      if (target) target.scrollIntoView({ behavior: "smooth" });
     });
   });
 }
 
 function setupCardHover() {
-  const cards = document.querySelectorAll(".card");
-  cards.forEach(card => {
+  document.querySelectorAll(".card").forEach(card => {
     card.addEventListener("mouseenter", () => card.classList.add("hovered"));
     card.addEventListener("mouseleave", () => card.classList.remove("hovered"));
   });
@@ -366,8 +328,54 @@ function simulateBTCPrice() {
   }, 2000);
 }
 
-// Modal Bitcoin Fun Fact
-document.addEventListener('DOMContentLoaded', function () {
+function initBTCChart() {
+  const ctx = document.getElementById('btcChart');
+  if (!ctx || typeof Chart === 'undefined') return;
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      datasets: [{
+        label: 'BTC Portfolio (%)',
+        data: [12, 19, 3, 5, 2],
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: { callback: value => value + '%' }
+        }
+      }
+    }
+  });
+}
+
+function initRandomQuote() {
+  const quotes = [
+    "Jangan lari dari pasar, pelajari polanya.",
+    "Volatilitas adalah sahabat investor sejati.",
+    "BTC turun? Waktu yang tepat buat riset, bukan panik.",
+    "Bitcoin diciptakan bukan untuk yang lemah hati.",
+    "Market merah itu diskon buat yang cerdas."
+  ];
+
+  const display = document.getElementById('quoteDisplay');
+  const btn = document.getElementById('newQuoteBtn');
+
+  if (!btn || !display) return;
+
+  btn.addEventListener('click', () => {
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    display.textContent = `"${randomQuote}"`;
+  });
+}
+
+function initModalFunFact() {
   const showFactBtn = document.getElementById('showFactBtn');
   if (!showFactBtn) return;
 
@@ -403,89 +411,21 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.style.display = 'none';
     overlay.style.display = 'none';
   });
-});
+}
 
-// Filter Portfolio
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', function () {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
+function initPortfolioFilter() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  if (!filterBtns.length) return;
 
-    const filter = this.getAttribute('data-filter');
-    document.querySelectorAll('.portfolio-item').forEach(item => {
-      item.style.display = (filter === 'all' || item.classList.contains(filter)) ? 'block' : 'none';
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      const filter = this.getAttribute('data-filter');
+      document.querySelectorAll('.portfolio-item').forEach(item => {
+        item.style.display = (filter === 'all' || item.classList.contains(filter)) ? 'block' : 'none';
+      });
     });
-  });
-});
-
-function filterSelection(category) {
-  let items = document.getElementsByClassName("portfolio-item");
-  for (let i = 0; i < items.length; i++) {
-    items[i].style.display = category === "all" || items[i].classList.contains(category) ? "block" : "none";
-  }
-
-  const buttons = document.querySelectorAll(".filter-btn");
-  buttons.forEach(btn => btn.classList.remove("active"));
-  event.target.classList.add("active");
-}
-
-window.onload = function () {
-  filterSelection('all');
-};
-
-function initBTCChart() {
-  const ctx = document.getElementById('btcChart');
-  if (!ctx) return;
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-      datasets: [{
-        label: 'BTC Portfolio (%)',
-        data: [12, 19, 3, 5, 2],
-        backgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
-          '#4BC0C0',
-          '#9966FF'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            callback: function(value) {
-              return value + '%';
-            }
-          }
-        }
-      }
-    }
-  });
-}
-
-function initRandomQuote() {
-  const quotes = [
-    "Jangan lari dari pasar, pelajari polanya.",
-    "Volatilitas adalah sahabat investor sejati.",
-    "BTC turun? Waktu yang tepat buat riset, bukan panik.",
-    "Bitcoin diciptakan bukan untuk yang lemah hati.",
-    "Market merah itu diskon buat yang cerdas."
-  ];
-
-  const display = document.getElementById('quoteDisplay');
-  const btn = document.getElementById('newQuoteBtn');
-
-  if (!btn || !display) return;
-
-  btn.addEventListener('click', () => {
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    display.textContent = `"${randomQuote}"`;
   });
 }
